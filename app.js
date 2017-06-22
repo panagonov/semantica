@@ -33,7 +33,7 @@ let sendMail = (mailData) =>
     {
         let transporter = nodemailer.createTransport({
             host: 'smtp.gmail.com',
-            port: 25,
+            port: 465,
             secure: true,
             auth: {
                 user: 'panagonov@gmail.com',
