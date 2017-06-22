@@ -42,10 +42,10 @@ let sendMail = (mailData) =>
         });
 
         let mailOptions = {
-            from: mailData.name + " <" + mailData.email + ">",
+            from: mailData.name,
             to: 'panagonov@mail.bg',
             subject: mailData.subject,
-            html: mailData.message +  '<br/><b>'+ mailData.phone + '</b>' + '<br/><b>'+ mailData.address + '</b>'
+            html: mailData.message +  '<br/><b>'+ mailData.email + '</b>' + '<br/><b>'+ mailData.phone + '</b>' + '<br/><b>'+ mailData.address + '</b>'
         };
 
         transporter.sendMail(mailOptions, (error, info) => {
