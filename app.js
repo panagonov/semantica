@@ -93,7 +93,7 @@ app.post("/send_email", async(req, res) =>
         console.error(e)
     }
 
-    res.setHeader("Content-Type", "text/json");
+    res.setHeader("Content-Type", "application/json");
     res.send(info)
 });
 
