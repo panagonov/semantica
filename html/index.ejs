@@ -14,6 +14,28 @@
     <link rel='stylesheet' type='text/css' href='/bootstrap.css' />
     <link rel='stylesheet' type='text/css' href='/app.css' />
 
+    <script>
+        var iframeLoaded = function()
+        {
+            var iframeDocument = document.getElementById("sendMailIFrame").contentWindow.document;
+            var body = iframeDocument.getElementsByTagName("body")[0];
+            var status = {}
+            try {
+                status = JSON.parse(body.innerText)
+            }
+            catch(e)
+            {
+                return;
+            }
+
+            if (status.error)
+            {
+                return alert("Error : " + JSON.stringify(status.error))
+            }
+            alert("Email was sent")
+        }
+    </script>
+
 
 </head>
 <body>
@@ -252,7 +274,7 @@
                     </h5>
                 </div>
                 <div class="col-xs-100 col-sm-50 col-md-50 col-lg-50">
-                    <iframe  name="targetIFrame"></iframe>
+                    <iframe  id="sendMailIFrame" name="targetIFrame" onload="iframeLoaded()"></iframe>
                     <form method="post" action="/send_email" target="targetIFrame">
                         <div class="row">
                             <div class="col-xs-50 col-sm-50 col-md-50 col-lg-50">

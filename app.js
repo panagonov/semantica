@@ -90,7 +90,8 @@ app.post("/send_email", async(req, res) =>
     }
     catch (e)
     {
-        console.error(e)
+        console.error(e);
+        info = {error: e};
     }
 
     res.setHeader("Content-Type", "text/plain");
