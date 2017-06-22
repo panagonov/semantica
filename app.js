@@ -42,10 +42,14 @@ let sendMail = (mailData) =>
         });
 
         let mailOptions = {
-            from: mailData.name,
+            from: mailData.name + "<" + mailData.email + ">",
             to: 'panagonov@mail.bg',
             subject: mailData.subject,
-            html: mailData.message +  '<br/><b>'+ mailData.email + '</b>' + '<br/><b>'+ mailData.phone + '</b>' + '<br/><b>'+ mailData.address + '</b>'
+            html: mailData.message +
+            '<br/><b>'+ mailData.name + '</b>' +
+            '<br/><b>'+ mailData.email + '</b>' +
+            '<br/><b>'+ mailData.phone + '</b>' +
+            '<br/><b>'+ mailData.address + '</b>'
         };
 
         transporter.sendMail(mailOptions, (error, info) => {
@@ -98,11 +102,8 @@ app.post("/send_email", async(req, res) =>
     res.send(JSON.stringify(info))
 });
 
-
 app.listen(port, '0.0.0.0');
 console.log('Semantica.ai is READY!!!', 'port:', port);
-
-
 
 process.on('uncaughtException', function (err, data)
 {
