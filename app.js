@@ -83,18 +83,18 @@ app.get("/", (req, res) =>
 
 app.post("/send_email", async(req, res) =>
 {
-    let info = {};
+   let info = {};
     try
     {
-        await(sendMail(req.body));
+        info = await(sendMail(req.body));
     }
     catch (e)
     {
         console.error(e)
     }
 
-    res.setHeader("Content-Type", "application/json");
-    res.send(info)
+    res.setHeader("Content-Type", "text/plain");
+    res.send(JSON.stringify(info))
 });
 
 
