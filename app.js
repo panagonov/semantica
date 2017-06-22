@@ -32,18 +32,18 @@ let sendMail = (mailData) =>
     new Promise((resolve, reject) =>
     {
         let transporter = nodemailer.createTransport({
-            host: 'smtp.mail.bg',
+            host: 'smtp.gmail.com',
             port: 465,
             secure: true,
             auth: {
-                user: 'panagonov@mail.com',
-                pass: 'maiAm8reaJ'
+                user: 'panagonov@gmail.com',
+                pass: 'gooAm8reaJ'
             }
         });
 
         let mailOptions = {
             from: mailData.name + "<" + mailData.email + ">",
-            to: 'panagonov@gmail.com',
+            to: 'panagonov@mail.bg',
             subject: mailData.subject,
             html: mailData.message +
             '<br/><b>'+ mailData.name + '</b>' +
