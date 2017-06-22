@@ -31,7 +31,6 @@ let allowCrossOrigin = () =>{
 let sendMail = (mailData) =>
     new Promise((resolve, reject) =>
     {
-        console.log("sending mail")
         let transporter = nodemailer.createTransport({
             host: 'smtp.gmail.com',
             port: 465,
@@ -48,9 +47,8 @@ let sendMail = (mailData) =>
             subject: mailData.subject,
             html: mailData.message +  '<br/><b>'+ mailData.phone + '</b>' + '<br/><b>'+ mailData.address + '</b>'
         };
-        console.log("sending mail 1")
+
         transporter.sendMail(mailOptions, (error, info) => {
-            console.log("sending mail 2")
             if (error) {
                 return reject(error);
             }
