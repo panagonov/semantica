@@ -1,0 +1,26 @@
+{
+  "name": "semantica.ai",
+  "version": "0.0.1",
+  "private": true,
+  "description": "Semantica home site",
+  "keywords": [],
+  "author": "",
+  "license": "",
+  "main": "app.js",
+  "engines": {
+    "node": ">= 6.9.2"
+  },
+  "dependencies": {
+    "body-parser": "^1.16.0",
+    "compression": "^1.6.2",
+    "cookie-parser": "^1.4.3",
+    "ejs": "^2.5.6",
+    "express": "^4.14.1",
+    "method-override": "^2.3.7"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "start": "node app.js",
+    "test": "swagger project test"
+  }
+}
