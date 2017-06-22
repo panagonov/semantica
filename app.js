@@ -4,6 +4,7 @@ let compression    = require('compression');
 let methodOverride = require('method-override');
 let bodyParser     = require('body-parser');
 let cookieParser   = require('cookie-parser');
+let nodemailer     = require('nodemailer');
 
 let port = 3007;
 
@@ -26,6 +27,36 @@ let allowCrossOrigin = () =>{
         return next();
     };
 };
+
+let sendMail = (mailData) =>
+    new Promise((resolve, reject) =>
+    {
+        let transporter = nodemailer.createTransport({
+            host: 'smtp.gmail.com',
+            port: 465,
+            secure: true,
+            auth: {
+                user: 'panagonov@gmail.com',
+                pass: 'gooAm8reaJ'
+            }
+        });
+
+        let mailOptions = {
+            from: mailData.name + " <" + mailData.email + ">",
+            to: 'panagonov@mail.bg',
+            subject: mailData.subject,
+            html: mailData.message +  '<br/><b>'+ mailData.phone + '</b>' + '<br/><b>'+ mailData.address + '</b>'
+        };
+
+        transporter.sendMail(mailOptions, (error, info) => {
+            if (error) {
+                return reject(error);
+            }
+            resolve(info);
+        });
+
+    });
+
 
 app.use( methodOverride() );
 app.use( compression() );
@@ -50,9 +81,18 @@ app.get("/", (req, res) =>
     res.render("index.ejs", {})
 });
 
-app.post("/send_email", (req, res) =>
+app.post("/send_email", async(req, res) =>
 {
-    console.log(req.body);
+    try
+    {
+        let info = await(sendMail(req.body));
+        console.log(info)
+    }
+    catch (e)
+    {
+        console.error(e)
+    }
+
     res.setHeader("Content-Type", "text/plain");
     res.send("")
 });
