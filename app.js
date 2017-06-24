@@ -43,7 +43,7 @@ let sendMail = (mailData) =>
 
         let mailOptions = {
             from: mailData.name + "<" + mailData.email + ">",
-            to: 'rossen@mail.bg',
+            to: 'rossen@semantica.ai',
             subject: mailData.subject,
             html: mailData.message +
             '<br/><b>'+ mailData.name + '</b>' +
