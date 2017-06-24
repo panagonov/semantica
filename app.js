@@ -34,7 +34,7 @@ let sendMail = (mailData) =>
         let transporter = nodemailer.createTransport({
             host: 'mail.semantica.ai',
             port: 465,
-            secure: true,
+            secure: false,
             auth: {
                 user: 'rossen@semantica.ai',
                 pass: 'g00g1E.123'
