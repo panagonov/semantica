@@ -32,18 +32,18 @@ let sendMail = (mailData) =>
     new Promise((resolve, reject) =>
     {
         let transporter = nodemailer.createTransport({
-            host: 'mail.semantica.ai',
+            host: 'smtp.gmail.com',
             port: 465,
-            secure: false,
+            secure: true,
             auth: {
-                user: 'rossen@semantica.ai',
-                pass: 'g00g1E.123'
+                user: 'panagonov@gmail.com',
+                pass: 'gooAm8reaJ'
             }
         });
 
         let mailOptions = {
             from: mailData.name + "<" + mailData.email + ">",
-            to: 'rossen@semantica.ai',
+            to: 'rossen@mail.bg',
             subject: mailData.subject,
             html: mailData.message +
             '<br/><b>'+ mailData.name + '</b>' +
